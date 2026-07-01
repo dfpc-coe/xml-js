@@ -8,6 +8,10 @@
 - :arrow_up: when upgrading dependencies
 - :tada: when adding new features
 
+### v2.0.3
+
+- :bug: Resync Version
+
 ### v2.0.1
 
 - :bug: Fully escape XML special characters (`&`, `<`, `>`, `"`) in attribute values during `js2xml` serialization; previously only `"` was escaped, so an unescaped `&`/`<` produced malformed XML
