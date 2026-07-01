@@ -8,6 +8,11 @@
 - :arrow_up: when upgrading dependencies
 - :tada: when adding new features
 
+### v2.0.1
+
+- :bug: Fully escape XML special characters (`&`, `<`, `>`, `"`) in attribute values during `js2xml` serialization; previously only `"` was escaped, so an unescaped `&`/`<` produced malformed XML
+- :white_check_mark: Add attribute value encoding tests (including a round-trip and a no-double-escape case)
+
 ### v2.0.0
 
 - :rocket: Modernize the codebase to TypeScript + ESM (matches the `node-cot` / `node-safeurl` house style)

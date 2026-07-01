@@ -451,6 +451,43 @@ describe('Testing js2xml.js:', function () {
       });
     });
 
+    describe('attribute value encoding', function() {
+      // Attribute values must escape the XML special characters & < > "
+      // Regression: unescaped '&' in an attribute (e.g. a CoT callsign) produced
+      // malformed XML that downstream parsers (ATAK) rejected.
+
+      it('should escape an ampersand in an attribute value', function() {
+        const js = { event: { _attributes: { callsign: 'Alpha & Bravo' } } };
+        expect(convert.js2xml(js, {compact: true})).toEqual('<event callsign="Alpha &amp; Bravo"/>');
+      });
+
+      it('should escape all special characters in an attribute value', function() {
+        const js = { node: { _attributes: { value: 'a & b < c > d " e' } } };
+        expect(convert.js2xml(js, {compact: true})).toEqual('<node value="a &amp; b &lt; c &gt; d &quot; e"/>');
+      });
+
+      it('should escape special characters in non-compact attributes', function() {
+        const js = { elements: [{ type: 'element', name: 'node', attributes: { value: 'a & b < c > d "' } }] };
+        expect(convert.js2xml(js, {compact: false})).toEqual('<node value="a &amp; b &lt; c &gt; d &quot;"/>');
+      });
+
+      it('should not double-escape an already encoded ampersand', function() {
+        const js = { node: { _attributes: { value: 'Tom &amp; Jerry' } } };
+        expect(convert.js2xml(js, {compact: true})).toEqual('<node value="Tom &amp; Jerry"/>');
+      });
+
+      it('should round-trip attribute values containing special characters', function() {
+        const original = '<event callsign="Alpha &amp; Bravo &lt; Charlie &gt; Delta &quot;Echo&quot;"/>';
+        const js = convert.xml2js(original, {compact: true});
+        expect(convert.js2xml(js, {compact: true})).toEqual(original);
+      });
+
+      it('should escape special characters in multiple attributes on one element', function() {
+        const js = { node: { _attributes: { a: 'x & y', b: '1 < 2', c: '"quoted"' } } };
+        expect(convert.js2xml(js, {compact: true})).toEqual('<node a="x &amp; y" b="1 &lt; 2" c="&quot;quoted&quot;"/>');
+      });
+    });
+
   });
 
 });
