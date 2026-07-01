@@ -8,7 +8,7 @@
 - :arrow_up: when upgrading dependencies
 - :tada: when adding new features
 
-### v1.6.11
+### v2.0.0
 
 - :rocket: Modernize the codebase to TypeScript + ESM (matches the `node-cot` / `node-safeurl` house style)
 - :rocket: Replace the Webpack/Babel build with `tsc` emitting `dist/`
