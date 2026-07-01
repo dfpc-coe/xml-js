@@ -1,0 +1,722 @@
+import { describe, it } from 'node:test';
+import { expect } from './expect.js';
+import * as convert from '../index.js';
+import testItems from './test-items.js';
+
+describe('Testing xml2js.js:', function () {
+
+  //var books = require('fs').readFileSync('test/fixtures/books.xml', 'utf8');
+
+  describe('No options supplied (fallback to defaults):', function () {
+
+    const options = {};
+    testItems('xml2js', options).forEach(function (test) {
+      it(test.desc, function () {
+        expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+      });
+    });
+
+  });
+
+  describe('options = {compact: false}', function () {
+
+    describe('Options set to default values explicitly:', function () {
+
+      const options = {singleLine: false, compact: false, trim: false, sanitize: false, nativeType: false, alwaysChildren: false, addParent: false};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {compact: false}', function () {
+
+      const options = {compact: false};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {trim: true}', function () {
+
+      const options = {compact: false, trim: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {sanitize: true}', function () {
+
+      const options = {compact: false, sanitize: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {nativeType: true}', function () {
+
+      const options = {compact: false, nativeType: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {nativeTypeAttributes: true}', function () {
+
+      const options = {compact: false, nativeTypeAttributes: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {alwaysChildren: true}', function () {
+
+      const options = {compact: false, alwaysChildren: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {addParent: true}', function () {
+
+      const options = {compact: false, addParent: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreText: true}', function () {
+
+      const options = {compact: false, ignoreText: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreComment: true}', function () {
+
+      const options = {compact: false, ignoreComment: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreCdata: true}', function () {
+
+      const options = {compact: false, ignoreCdata: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreDoctype: true}', function () {
+
+      const options = {compact: false, ignoreDoctype: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreDeclaration: true}', function () {
+
+      const options = {compact: false, ignoreDeclaration: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreInstruction: true}', function () {
+
+      const options = {compact: false, ignoreInstruction: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+  });
+
+  describe('options = {compact: true}', function () {
+
+    describe('Options set to default values explicitly:', function () {
+
+      const options = {compact: true, trim: false, sanitize: false, nativeType: false, alwaysChildren: false, addParent: false};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {compact: true}', function () {
+
+      const options = {compact: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {trim: true}', function () {
+
+      const options = {compact: true, trim: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {sanitize: true}', function () {
+
+      const options = {compact: true, sanitize: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {alwaysArray: true}', function () {
+
+      const options = {compact: true, alwaysArray: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {alwaysArray: ["a", "c"]}', function () {
+
+      const options = {compact: true, alwaysArray: ['a', 'c']};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {addParent: true}', function () {
+
+      const options = {compact: true, addParent: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreText: true}', function () {
+
+      const options = {compact: true, ignoreText: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreComment: true}', function () {
+
+      const options = {compact: true, ignoreComment: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreCdata: true}', function () {
+
+      const options = {compact: true, ignoreCdata: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreDoctype: true}', function () {
+
+      const options = {compact: true, ignoreDoctype: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreDeclaration: true}', function () {
+
+      const options = {compact: true, ignoreDeclaration: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {ignoreInstruction: true}', function () {
+
+      const options = {compact: true, ignoreInstruction: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+  });
+
+  describe('Varying spaces', function () {
+
+    describe('options = {}', function () {
+
+      const options = {};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {spaces: true}', function () {
+
+      const options = {spaces: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {spaces: 2}', function () {
+
+      const options = {spaces: 2};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {spaces: 4}', function () {
+
+      const options = {spaces: 4};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {spaces: \'  \'}', function () {
+
+      const options = {spaces: '  '};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {spaces: \\t}', function () {
+
+      const options = {spaces: '\t'};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+  });
+
+  describe('Various options:', function () {
+
+    describe('options = {trim: true}', function () {
+
+      const options = {trim: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2js(test.xml, options)).toEqual(test.js);
+        });
+      });
+
+    });
+
+    describe('options = {nativeType: true}', function () {
+
+      const options = {nativeType: true};
+
+      it('Parse number', function () {
+        expect(convert.xml2js('<a>123</a>', options)).toEqual({"elements":[{"type":"element","name":"a","elements":[{"type":"text","text":123}]}]});
+      });
+      it('Parse true', function () {
+        expect(convert.xml2js('<a>true</a>', options)).toEqual({"elements":[{"type":"element","name":"a","elements":[{"type":"text","text":true}]}]});
+      });
+      it('Parse false', function () {
+        expect(convert.xml2js('<a>false</a>', options)).toEqual({"elements":[{"type":"element","name":"a","elements":[{"type":"text","text":false}]}]});
+      });
+      convert.xml2js('<a>x', {});
+      /*it('Parse improper XML', function () {
+        expect(convert.xml2js('<a>x', {})).toEqual({"elements":[{"type":"element","name":"a","elements":[{"type":"text","text":"x"}]}]});
+      });*/
+
+    });
+
+    describe('options = {nativeTypeAttributes: true}', function () {
+
+      const options = {nativeTypeAttributes: true};
+
+      it('Parse number', function () {
+        expect(convert.xml2js('<a data-value="123"></a>', options)).toEqual({"elements":[{"type":"element","name":"a","attributes":{"data-value":123}}]});
+      });
+      it('Parse true', function () {
+        expect(convert.xml2js('<a data-value="true"></a>', options)).toEqual({"elements":[{"type":"element","name":"a","attributes":{"data-value":true}}]});
+      });
+      it('Parse false', function () {
+        expect(convert.xml2js('<a data-value="false"></a>', options)).toEqual({"elements":[{"type":"element","name":"a","attributes":{"data-value":false}}]});
+      });
+
+    });
+
+    describe('options = {instructionHasAttributes: true}', function () {
+
+      const options = {compact: true, instructionHasAttributes: true};
+
+      it('Parse attributes in processing instruction', function () {
+        expect(convert.xml2js('<?go to="there"?>', options)).toEqual({"_instruction":{"go":{"_attributes":{"to":"there"}}}});
+      });
+
+      it('Parse attributes in processing instruction', function () {
+        expect(convert.xml2js('<?go to="there"?>', {instructionHasAttributes: true})).toEqual({"elements":[{"type":"instruction","name":"go","attributes":{"to":"there"}}]});
+      });
+
+    });
+
+  });
+
+  describe('xml2json:', function () {
+
+    describe('No options supplied (fallback to defaults):', function () {
+
+      const options = {};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2json(test.xml, options)).toEqual(JSON.stringify(test.js));
+        });
+      });
+
+    });
+
+    describe('options = {compact: true, addParent: true}:', function () {
+
+      const options = {onlyItem: 6, compact: true, addParent: true};
+      testItems('xml2js', options).forEach(function (test) {
+        it(test.desc, function () {
+          expect(convert.xml2json(test.xml, options)).toBe(JSON.stringify(test.js, function (k, v) { return k === '_parent'? '_' : v; }));
+        });
+      });
+
+    });
+
+  });
+
+  describe('User reported issues:', function () {
+
+    describe('case by Mark Pareja', function () {
+      // see https://github.com/nashwaan/xml-js/issues/3
+      const xml =
+        '<?xml version="1.0" encoding="utf-8"?>\n' +
+        '<dp:ListServicesReply ReturnCode="0" xmlns:dp="http://www.cisco.com/vtg/diagnosticportal">\n' +
+        '  <dp:Schema Version="1.0" />\n' +
+        '  <dp:ServiceList>\n' +
+        '    <dp:Service Name="Cisco ICM usgd1 LoggerA" Description="Provides Call Logging services for Instance usgd1" Status="Running" StartupType="Auto" LogOnAs="****" />\n' +
+        '    <dp:Service Name="Cisco ICM Diagnostic Framework" Description="Provides a web-based diagnostic service for Cisco Unified ICM, Contact Center Enterprise application." Status="Running" StartupType="Auto" LogOnAs="LocalSystem" />\n' +
+        '  </dp:ServiceList>\n' +
+        '</dp:ListServicesReply>';
+      const json = {
+        "_declaration": {
+          "_attributes": {
+            "version": "1.0",
+            "encoding": "utf-8"
+          }
+        },
+        "dp:ListServicesReply": {
+          "_attributes": {
+            "ReturnCode": "0",
+            "xmlns:dp": "http://www.cisco.com/vtg/diagnosticportal"
+          },
+          "dp:Schema": {
+            "_attributes": {
+              "Version": "1.0"
+            }
+          },
+          "dp:ServiceList": {
+            "dp:Service": [
+              {
+                "_attributes": {
+                  "Name": "Cisco ICM usgd1 LoggerA",
+                  "Description": "Provides Call Logging services for Instance usgd1",
+                  "Status": "Running",
+                  "StartupType": "Auto",
+                  "LogOnAs": "****"
+                }
+              },
+              {
+                "_attributes": {
+                  "Name": "Cisco ICM Diagnostic Framework",
+                  "Description": "Provides a web-based diagnostic service for Cisco Unified ICM, Contact Center Enterprise application.",
+                  "Status": "Running",
+                  "StartupType": "Auto",
+                  "LogOnAs": "LocalSystem"
+                }
+              }
+            ]
+          }
+        }
+      };
+
+      it('should output as expected json', function () {
+        expect(convert.xml2json(xml, {compact: true})).toEqual(JSON.stringify(json));
+      });
+
+    });
+
+    describe('case by Félix Dion Robidoux', function () {
+      // see https://github.com/nashwaan/xml-js/issues/6
+      const xml =
+        '<ZohoCreator>\n' +
+        '    <applicationslist>\n' +
+        '        <application name="testapp">\n' +
+        '            <formlist>\n' +
+        '                <form name="Untitled_Form">\n' +
+        '                    <add>\n' +
+        '                        <field name="Subform_Single_Line">\n' +
+        '                            <value>BEUHBALUGU</value>\n' +
+        '                        </field>\n' +
+        '                    </add>\n' +
+        '                </form>\n' +
+        '                <form name="Untitled_Form">\n' +
+        '                    <add>\n' +
+        '                        <field name="Subform_Single_Line">\n' +
+        '                            <value>IF YOU CAN SEE THIS YOU DESERVE THE SUCC</value>\n' +
+        '                        </field>\n' +
+        '                    </add>\n' +
+        '                </form>\n' +
+        '            </formlist>\n' +
+        '        </application>\n' +
+        '        <application name="derp">\n' +
+        '            <formlist></formlist>\n' +
+        '        </application>\n' +
+        '    </applicationslist>\n' +
+        '</ZohoCreator>';
+
+      const json = convert.xml2json(xml, {compact: true, spaces: 4});
+
+      it('should output json and reverse it back to xml', function () {
+        expect(convert.json2xml(json, {compact: true, spaces: 4, fullTagEmptyElement: true})).toEqual(xml);
+      });
+
+    });
+
+    describe('case by misitoth', function () {
+      // see https://github.com/nashwaan/xml-js/issues/13
+      const xml = '<!DOCTYPE svc_init SYSTEM "MLP_SVC_INIT_300.DTD" [<!ENTITY % extension SYSTEM "PIF_EXTENSION_100.DTD">%extension;]>';
+      const json = {"_doctype" : "svc_init SYSTEM \"MLP_SVC_INIT_300.DTD\" [<!ENTITY % extension SYSTEM \"PIF_EXTENSION_100.DTD\">%extension;]"};
+
+      it('should output as expected json', function () {
+        expect(convert.xml2js(xml, {compact: true})).toEqual(json);
+      });
+
+    });
+
+    describe('case by adamgcraig', function () {
+      // see https://github.com/nashwaan/xml-js/issues/26
+      let xml =
+        '<?xml version="1.0" encoding="UTF-8"?>\n' +
+        '<note>\n' +
+        '\v<to>xml-js</to>\n' +
+        '\v<from>ACraig</from>\n' +
+        '\v<heading>Min Example</heading>\n' +
+        '\v<body>Here are some characters that get sanitized: " \'</body>\n' +
+        '</note>';
+      const js = {
+        "_declaration": {
+          "_attributes": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+          }
+        },
+        "note": {
+          "to": {
+            "_text": "xml-js"
+          },
+          "from": {
+            "_text": "ACraig"
+          },
+          "heading": {
+            "_text": "Min Example"
+          },
+          "body": {
+            "_text": "Here are some characters that get sanitized: \" '"
+          }
+        }
+      };
+
+      it('should convert xml object to js and back to xml correctly', function () {
+        xml = xml.replace(/\v/g, '  ');
+        const js_ = convert.xml2js(xml, {compact: true});
+        expect(js_).toEqual(js);
+        expect(convert.js2xml(js_, {spaces: 2, compact: true})).toEqual(xml);
+      });
+
+    });
+
+    describe('case by bidiu', function () {
+      // see https://github.com/nashwaan/xml-js/issues/26
+      const xml = '<title>Support &amp; resistance</title>';
+      const js = {
+        elements: [{
+          type: 'element',
+          name: 'title',
+          elements: [{
+            type: 'text',
+            text: 'Support & resistance'
+          }]
+        }]
+      };
+
+      it('should convert xml object to js and back to xml correctly', function () {
+        const js_ = convert.xml2js(xml);
+        expect(js_).toEqual(js);
+        expect(convert.js2xml(js_)).toEqual(xml);
+      });
+
+    });
+
+    describe('case by Daniel \'yngwi\'', function () {
+      // see https://github.com/nashwaan/xml-js/issues/29
+      const xml = '<outer> This is <inner> some</inner> <inner>Text </inner> </outer>';
+      const js = {
+        elements: [{
+          type: 'element',
+          name: 'outer',
+          elements: [{
+            type: 'text',
+            text: ' This is '
+          }, {
+            type: 'element',
+            name: 'inner',
+            elements: [{
+              type: 'text',
+              text: ' some'
+            }]
+          }, {
+            type: 'text',
+            text: ' '
+          }, {
+            type: 'element',
+            name: 'inner',
+            elements: [{
+              type: 'text',
+              text: 'Text '
+            }]
+          }, {
+            type: 'text',
+            text: ' '
+          }]
+        }]
+      };
+
+      it('should convert xml object to js and back to xml correctly', function () {
+        const js_ = convert.xml2js(xml, {captureSpacesBetweenElements: true});
+        expect(js_).toEqual(js);
+        expect(convert.js2xml(js_)).toEqual(xml);
+      });
+
+    });
+
+    describe('case by Nuno Martins', function () {
+      // see https://github.com/nashwaan/xml-js/issues/34
+      const xml = '<?xml version=\'1.0\' encoding=\'UTF-8\'?>';
+      const js = {
+        declaration: {
+          attributes: {
+            version: '1.0',
+            encoding: 'UTF-8'
+          }
+        }
+      };
+
+      it('should accept XML declarations that use single quotes', function () {
+        expect(convert.xml2js(xml)).toEqual(js);
+      });
+
+    });
+
+  });
+
+});

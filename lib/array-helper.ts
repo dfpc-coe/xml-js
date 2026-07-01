@@ -1,0 +1,7 @@
+export function isArray(value: unknown): value is Array<unknown> {
+    if (Array.isArray) {
+        return Array.isArray(value);
+    }
+    // fallback for older browsers like  IE 8
+    return Object.prototype.toString.call(value) === '[object Array]';
+}
