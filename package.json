@@ -1,7 +1,7 @@
 {
     "name": "@tak-ps/xml-js",
     "type": "module",
-    "version": "3.0.0",
+    "version": "2.0.0",
     "description": "A convertor between XML text and Javascript object / JSON text.",
     "repository": {
         "type": "git",
