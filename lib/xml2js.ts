@@ -311,8 +311,9 @@ function onDoctype(doctype: any): void {
     addField('doctype', doctype);
 }
 
-function onError(error: any): void {
-    error.note = error; //console.error(error);
+function onError(_error: any): void {
+    // sax re-throws this same error from parser.write() right after
+    // invoking this handler, so there's nothing to do here.
 }
 
 export default function xml2js(xml: string, userOptions?: Options.XML2JS): Element | ElementCompact {

@@ -8,6 +8,10 @@
 - :arrow_up: when upgrading dependencies
 - :tada: when adding new features
 
+### v2.0.4
+
+- :bug: Avoid circular Error
+
 ### v2.0.3
 
 - :bug: Resync Version
